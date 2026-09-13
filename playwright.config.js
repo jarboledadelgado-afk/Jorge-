@@ -13,10 +13,12 @@ module.exports = defineConfig({
     screenshot: 'only-on-failure'
   },
   projects: [
-    { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'], browserName: 'chromium', viewport: { width: 1440, height: 900 } } },
-    { name: 'android-390', use: { ...devices['Pixel 7'], browserName: 'chromium', viewport: { width: 390, height: 844 } } },
     { name: 'mobile-360', use: { ...devices['Pixel 5'], browserName: 'chromium', viewport: { width: 360, height: 800 } } },
-    { name: 'tablet-768', use: { ...devices['iPad (gen 7)'], browserName: 'chromium', viewport: { width: 768, height: 1024 } } }
+    { name: 'android-390', use: { ...devices['Pixel 7'], browserName: 'chromium', viewport: { width: 390, height: 844 } } },
+    { name: 'mobile-430', use: { ...devices['Pixel 7'], browserName: 'chromium', viewport: { width: 430, height: 932 } } },
+    { name: 'tablet-768', use: { ...devices['iPad (gen 7)'], browserName: 'chromium', viewport: { width: 768, height: 1024 } } },
+    { name: 'desktop-1024', use: { ...devices['Desktop Chrome'], browserName: 'chromium', viewport: { width: 1024, height: 768 } } },
+    { name: 'desktop-1440', use: { ...devices['Desktop Chrome'], browserName: 'chromium', viewport: { width: 1440, height: 900 } } }
   ],
   webServer: process.env.PLAYWRIGHT_BASE_URL ? undefined : {
     command: 'python3 -m http.server 4173',
