@@ -4,7 +4,9 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'universal-v010/**'
+      - 'universal-v010/index.html'
+      - 'universal-v010/styles.css'
+      - 'universal-v010/app.js'
       - 'tests/**'
       - 'package.json'
       - 'playwright.config.js'
