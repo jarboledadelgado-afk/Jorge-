@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#667557">
+<title>OREV® Centro de Control Universal v0.8 RC</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="boot-fallback" class="boot">Cargando OREV® Universal v0.8 RC…</div>
+<main id="app" class="app" hidden>
+<header>
+  <div class="top"><div><div class="brand">OREV® · Centro de Control</div><div class="small">Motor universal · v0.8 RC</div></div><button class="round" data-route="settings" aria-label="Ajustes">⚙️</button></div>
+  <div class="toolbar"><button class="chip" data-action="back">←</button><button class="chip" data-route="home">⌂</button><button class="chip" data-route="diagnostics">🧪 Diagnóstico</button></div>
+</header>
+<div id="view"></div>
+</main>
+<nav id="bottom-nav" class="bottom" hidden>
+<button data-route="home"><span>🏠</span>Inicio</button><button data-route="work"><span>💼</span>Trabajo</button><button data-route="family"><span>👨‍👩‍👧</span>Familia</button><button data-route="house"><span>🏡</span>Casa</button><button data-route="me"><span>🌿</span>Yo</button>
+</nav>
+<script src="app.js" defer></script>
+</body>
+</html>
