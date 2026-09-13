@@ -1,0 +1,50 @@
+name: OREV QA
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'universal-v010/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'playwright.config.js'
+      - '.github/workflows/orev-qa.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: JavaScript syntax check
+        run: node --check universal-v010/app.js
+      - name: Security grep (frontend secrets)
+        shell: bash
+        run: |
+          set -e
+          if grep -RniE '(client_secret|private_key|sk-[A-Za-z0-9_-]{20,}|Bearer[[:space:]]+[A-Za-z0-9._-]{20,})' universal-v010; then
+            echo 'Potential frontend secret detected'
+            exit 1
+          fi
+          echo 'No obvious frontend secrets detected'
+      - name: Run Playwright E2E
+        run: npx playwright test
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
