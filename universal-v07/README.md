@@ -1,0 +1,1 @@
+OREV® Centro de Control Universal v0.7 RC. Candidata paralela centrada en continuidad OREV, persistencia de hiperfoco y QA. No sustituye Zary v1.9.0.
