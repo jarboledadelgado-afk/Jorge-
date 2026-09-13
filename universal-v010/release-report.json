@@ -1,0 +1,70 @@
+{
+  "product": "OREV Centro de Control Universal",
+  "version": "0.10 RC",
+  "schemaVersion": 10,
+  "qa": {
+    "workflow": "OREV QA",
+    "runId": 34788239129,
+    "conclusion": "success",
+    "e2e": {
+      "framework": "Playwright",
+      "projects": 6,
+      "scenariosPerProject": 6,
+      "totalExecutions": 36,
+      "passed": 36,
+      "unexpected": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationMs": 31188.902,
+      "viewports": [
+        "360x800",
+        "390x844",
+        "430x932",
+        "768x1024",
+        "1024x768",
+        "1440x900"
+      ]
+    },
+    "syntaxCheck": "PASS",
+    "frontendSecretScan": "PASS_BASIC",
+    "humanSamsungInternet": "PENDING_FINAL_ACCEPTANCE"
+  },
+  "gates": {
+    "boot": "PASS_AUTOMATED",
+    "routing": "PASS_AUTOMATED",
+    "storage": "PASS_E2E",
+    "onboarding": "PASS_E2E",
+    "tasks": "PASS_E2E",
+    "agendaLocal": "PASS_E2E",
+    "today": "PASS_E2E",
+    "saturation": "PASS_E2E",
+    "focus": "PASS_E2E",
+    "search": "PASS_E2E",
+    "orevBasic": "PASS_E2E",
+    "orevSemanticLocalFixtures": "PASS_E2E",
+    "orevContinuity": "PASS_E2E",
+    "orevCloseHistory": "PASS_E2E",
+    "backup": "PASS_E2E",
+    "restore": "PASS_E2E",
+    "migrationUniversalV09Fixture": "PASS_E2E",
+    "migrationZaryReal": "NOT_READY_NOT_EXECUTED",
+    "security": "PASS_BASIC",
+    "responsiveTechnical": "PASS_E2E",
+    "accessibility": "PARTIAL",
+    "humanFinalAcceptance": "PENDING"
+  },
+  "external": {
+    "email": "NOT_CONFIGURED",
+    "calendar": "NOT_CONFIGURED",
+    "drive": "NOT_CONFIGURED",
+    "paiExcel": "BACKEND_REQUIRED",
+    "clinical": "BACKEND_REQUIRED",
+    "orevGeneralAI": "NOT_CONFIGURED_BACKEND_REQUIRED"
+  },
+  "safety": {
+    "zaryV190Modified": false,
+    "realZaryDataTouched": false,
+    "clinicalDataInPublicFrontend": false,
+    "frontendSecretsIntentionallyAdded": false
+  }
+}
