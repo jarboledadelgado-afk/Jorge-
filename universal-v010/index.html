@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#667557">
+  <meta name="description" content="OREV® Centro de Control Universal — núcleo local verificable.">
   <title>OREV® Centro de Control Universal v0.10 RC</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,5 +37,10 @@
     <button data-route="me"><span>🌿</span>Yo</button>
   </nav>
   <script src="app.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
+    }
+  </script>
 </body>
 </html>
