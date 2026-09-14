@@ -3,14 +3,17 @@
 ## Resultado ejecutivo
 
 - **GitHub Actions OREV QA:** PASS
-- **Playwright E2E:** 36/36 PASS
+- **Playwright E2E:** 54/54 PASS
 - **Unexpected:** 0
 - **Skipped:** 0
 - **Flaky:** 0
-- **Duración del lote E2E:** ~31 s
-- **JS syntax check:** PASS
-- **Frontend secret grep:** PASS
+- **Último lote E2E verificado:** ~36.4 s
+- **JS syntax check:** PASS (`app.js` + `service-worker.js`)
+- **Frontend secret grep:** PASS básico
+- **PWA technical smoke:** PASS automatizado
+- **Accessibility smoke:** PASS básico; auditoría formal sigue PARTIAL
 - **Samsung Internet físico v0.10:** PENDING HUMAN FINAL ACCEPTANCE
+- **Samsung Internet físico v0.9:** HUMAN/BROWSER PASS registrado por separado
 
 ## Matriz de prueba automatizada
 
@@ -23,7 +26,7 @@ Se ejecutan 6 viewports Chromium:
 - 1024 × 768
 - 1440 × 900
 
-Cada viewport ejecuta 6 escenarios:
+Cada viewport ejecuta 9 escenarios:
 
 1. `USER_ACCEPTANCE_JOURNEY_01` — tarea, edición, agenda, Mi día, saturación, hiperfoco, búsqueda, OREV MAP v1 → EN PARTE → MAP v2, continuidad por navegación, reload, técnica, microacción, cierre e historial.
 2. Perfil/tarea sobreviven `page.reload()`.
@@ -31,12 +34,16 @@ Cada viewport ejecuta 6 escenarios:
 4. No existe overflow horizontal en el viewport probado.
 5. Backup export → mutación → restore → recuperación del estado.
 6. Fixture sintético v0.9 → migración/normalización v0.10 conservando tarea y sesión OREV compatible.
+7. Manifest PWA enlazado, parseable y con requisitos técnicos básicos verificados.
+8. `service-worker.js` disponible y arranque de app sin errores de página en el smoke test.
+9. Accesibilidad básica: controles visibles con nombre accesible y foco programático.
 
-Total: **6 × 6 = 36 ejecuciones E2E**.
+Total: **6 × 9 = 54 ejecuciones E2E**.
 
-## Fallo de infraestructura encontrado y reparado
+## Fallos encontrados y reparados durante este ciclo
 
-Una ejecución anterior falló porque el proyecto tablet heredó WebKit del perfil iPad mientras CI solo instalaba Chromium. Se corrigió fijando `browserName: chromium` para todos los proyectos. La regresión posterior quedó verde.
+1. Una ejecución previa falló porque el proyecto tablet heredó WebKit del perfil iPad mientras CI solo instalaba Chromium. Se corrigió fijando `browserName: chromium` para todos los proyectos.
+2. La primera prueba PWA del service worker construía una URL desde `about:blank` antes de navegar. Se reprodujo como 6 fallos idénticos, se corrigió navegando primero y construyendo después la URL, y la regresión completa quedó verde.
 
 ## GATES
 
@@ -62,7 +69,9 @@ Una ejecución anterior falló porque el proyecto tablet heredó WebKit del perf
 | MIGRATION ZARY REAL | NOT READY / NO EJECUTADA |
 | SECURITY SMOKE | PASS básico |
 | RESPONSIVE TECHNICAL | PASS E2E 6 viewports |
-| ACCESSIBILITY | PARTIAL; requiere auditoría dedicada posterior |
+| PWA TECHNICAL | PASS automatizado; instalación física aún no certificada |
+| ACCESSIBILITY SMOKE | PASS básico |
+| ACCESSIBILITY FORMAL | PARTIAL |
 | SAMSUNG INTERNET v0.10 | PENDING HUMAN FINAL ACCEPTANCE |
 
 ## Externos
@@ -72,8 +81,8 @@ Una ejecución anterior falló porque el proyecto tablet heredó WebKit del perf
 - Drive: `EXTERNAL / NOT_CONFIGURED`
 - PAI/Excel: `BACKEND_REQUIRED`
 - Clínica: `BACKEND_REQUIRED`
-- IA semántica general: backend/modelo aún no conectado.
+- IA semántica general: `NOT_CONFIGURED / BACKEND_REQUIRED`
 
 ## Criterio de salida de esta RC
 
-No se registran FAIL críticos automatizados en el lote actual. Lo que queda para cerrar aceptación de v0.10 es una única prueba física lineal en Samsung Internet, más los servicios externos/backend que están deliberadamente fuera del core local.
+No existen FAIL críticos automatizados abiertos en el lote actual. Lo que queda para cerrar aceptación física de v0.10 es una única prueba lineal en Samsung Internet. Los servicios externos y backends privados permanecen deliberadamente fuera del core local y no se presentan como funcionales.
