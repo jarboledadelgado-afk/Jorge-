@@ -4,18 +4,18 @@
   "schemaVersion": 10,
   "qa": {
     "workflow": "OREV QA",
-    "runId": 34788239129,
+    "runId": 34792442799,
     "conclusion": "success",
     "e2e": {
       "framework": "Playwright",
       "projects": 6,
-      "scenariosPerProject": 6,
-      "totalExecutions": 36,
-      "passed": 36,
+      "scenariosPerProject": 9,
+      "totalExecutions": 54,
+      "passed": 54,
       "unexpected": 0,
       "skipped": 0,
       "flaky": 0,
-      "durationMs": 31188.902,
+      "durationMs": 36358.439,
       "viewports": [
         "360x800",
         "390x844",
@@ -27,7 +27,11 @@
     },
     "syntaxCheck": "PASS",
     "frontendSecretScan": "PASS_BASIC",
-    "humanSamsungInternet": "PENDING_FINAL_ACCEPTANCE"
+    "pwaTechnicalSmoke": "PASS_AUTOMATED",
+    "accessibilitySmoke": "PASS_BASIC",
+    "accessibilityFormal": "PARTIAL",
+    "humanV09SamsungInternet": "PASS_RECORDED_SEPARATELY",
+    "humanV010SamsungInternet": "PENDING_FINAL_ACCEPTANCE"
   },
   "gates": {
     "boot": "PASS_AUTOMATED",
@@ -50,7 +54,8 @@
     "migrationZaryReal": "NOT_READY_NOT_EXECUTED",
     "security": "PASS_BASIC",
     "responsiveTechnical": "PASS_E2E",
-    "accessibility": "PARTIAL",
+    "pwaTechnical": "PASS_AUTOMATED",
+    "accessibility": "PARTIAL_FORMAL_AUDIT_PENDING",
     "humanFinalAcceptance": "PENDING"
   },
   "external": {
