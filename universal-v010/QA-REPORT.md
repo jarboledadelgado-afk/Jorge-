@@ -12,8 +12,8 @@
 - **Frontend secret grep:** PASS básico
 - **PWA technical smoke:** PASS automatizado
 - **Accessibility smoke:** PASS básico; auditoría formal sigue PARTIAL
-- **Samsung Internet físico v0.10:** PENDING HUMAN FINAL ACCEPTANCE
-- **Samsung Internet físico v0.9:** HUMAN/BROWSER PASS registrado por separado
+- **Samsung Internet físico v0.10:** HUMAN / BROWSER PASS — `Paso 12/12 — PRUEBA COMPLETA`
+- **Samsung Internet físico v0.9:** HUMAN / BROWSER PASS registrado por separado
 
 ## Matriz de prueba automatizada
 
@@ -39,6 +39,17 @@ Cada viewport ejecuta 9 escenarios:
 9. Accesibilidad básica: controles visibles con nombre accesible y foco programático.
 
 Total: **6 × 9 = 54 ejecuciones E2E**.
+
+## Evidencia humana v0.10
+
+- **Evidence ID:** `HUMAN_LINEAR_FLOW_002`
+- **Level:** HUMAN / BROWSER
+- **Device:** Samsung Android
+- **Browser:** Samsung Internet
+- **Terminal state:** `Paso 12/12 — PRUEBA COMPLETA`
+- **Status:** PASS
+
+Este PASS cierra el gate humano físico del recorrido lineal definido para v0.10 RC. No demuestra por sí solo Gmail, Google Calendar, Drive privado, PAI/Excel backend, backend clínico, IA remota, sincronización multidispositivo ni otras capacidades externas.
 
 ## Fallos encontrados y reparados durante este ciclo
 
@@ -69,10 +80,11 @@ Total: **6 × 9 = 54 ejecuciones E2E**.
 | MIGRATION ZARY REAL | NOT READY / NO EJECUTADA |
 | SECURITY SMOKE | PASS básico |
 | RESPONSIVE TECHNICAL | PASS E2E 6 viewports |
-| PWA TECHNICAL | PASS automatizado; instalación física aún no certificada |
+| PWA TECHNICAL | PASS automatizado |
 | ACCESSIBILITY SMOKE | PASS básico |
 | ACCESSIBILITY FORMAL | PARTIAL |
-| SAMSUNG INTERNET v0.10 | PENDING HUMAN FINAL ACCEPTANCE |
+| SAMSUNG INTERNET v0.10 | PASS HUMAN / BROWSER |
+| HUMAN FINAL ACCEPTANCE | PASS para el recorrido lineal definido de v0.10 RC |
 
 ## Externos
 
@@ -85,4 +97,6 @@ Total: **6 × 9 = 54 ejecuciones E2E**.
 
 ## Criterio de salida de esta RC
 
-No existen FAIL críticos automatizados abiertos en el lote actual. Lo que queda para cerrar aceptación física de v0.10 es una única prueba lineal en Samsung Internet. Los servicios externos y backends privados permanecen deliberadamente fuera del core local y no se presentan como funcionales.
+No existen FAIL críticos automatizados abiertos en el lote actual y el recorrido humano físico definido para Samsung Internet terminó en `Paso 12/12 — PRUEBA COMPLETA`. Universal v0.10 RC queda aceptada como snapshot del núcleo local para el alcance probado.
+
+Los servicios externos, sincronización multidispositivo y backends privados permanecen deliberadamente fuera de este PASS y no se presentan como funcionales.
