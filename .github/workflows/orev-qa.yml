@@ -4,9 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'universal-v010/index.html'
-      - 'universal-v010/styles.css'
-      - 'universal-v010/app.js'
+      - 'universal-v010/**'
       - 'tests/**'
       - 'package.json'
       - 'playwright.config.js'
@@ -29,7 +27,7 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: JavaScript syntax check
-        run: node --check universal-v010/app.js
+        run: node --check universal-v010/app.js && node --check universal-v010/service-worker.js
       - name: Security grep (frontend secrets)
         shell: bash
         run: |
