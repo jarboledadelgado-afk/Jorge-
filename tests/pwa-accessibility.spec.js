@@ -16,11 +16,12 @@ test('PWA manifest is linked and valid enough for installability checks', async 
 });
 
 test('service worker asset exists and app still boots without JS runtime errors', async ({ page, request }) => {
-  const sw = await request.get(new URL('service-worker.js', page.url() || 'http://127.0.0.1:4173/universal-v010/').toString());
-  expect(sw.ok()).toBeTruthy();
   const runtimeErrors = [];
   page.on('pageerror', error => runtimeErrors.push(error.message));
   await page.goto('./');
+  const swUrl = new URL('service-worker.js', page.url()).toString();
+  const sw = await request.get(swUrl);
+  expect(sw.ok()).toBeTruthy();
   await expect(page.locator('#boot-fallback')).toBeHidden();
   expect(runtimeErrors).toEqual([]);
 });
